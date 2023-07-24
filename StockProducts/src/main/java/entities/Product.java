@@ -19,6 +19,11 @@ public class Product {
         this.quantity = quantity;
     }
     
+    public Product(String name, double price){ //qtity 0
+        this.name = name;
+        this.price = price;
+    }
+    
     public double totalValueInStock(){
         return price * quantity;
     }
