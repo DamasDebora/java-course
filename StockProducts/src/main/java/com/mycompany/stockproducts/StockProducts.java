@@ -24,10 +24,13 @@ public class StockProducts {
        
         System.out.print("Price: ");
         double price = sc.nextDouble();
-        
-        
+             
         Product product = new Product(name, price);
-
+        product.setName(name = "wdasd");
+        System.out.println("updated name: "+ product.getName());
+        
+        product.setPrice(10);
+        System.out.println("updated price: " + product.getPrice());
         
         System.out.println("");
         System.out.println("Product data: " + product);
