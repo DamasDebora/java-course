@@ -17,18 +17,20 @@ public class StockProducts {
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
-        
-        Product product = new Product();
-        
+                
         System.out.println("Enter product data: ");
         System.out.print("Name: ");
-        product.name = sc.nextLine();
-        
+        String name = sc.nextLine();
+       
         System.out.print("Price: ");
-        product.price = sc.nextDouble();
+        double price = sc.nextDouble();
+             
+        Product product = new Product(name, price);
+        product.setName(name = "wdasd");
+        System.out.println("updated name: "+ product.getName());
         
-        System.out.print("Quantity in stock: ");
-        product.quantity = sc.nextInt();
+        product.setPrice(10);
+        System.out.println("updated price: " + product.getPrice());
         
         System.out.println("");
         System.out.println("Product data: " + product);
