@@ -29,9 +29,13 @@ public class EmployeeRegistration {
             System.out.println("Employee #" + (i + 1) + ":");
             System.out.print("ID: ");
             Integer id = sc.nextInt();
+            while(hasId(employees, id)){
+                System.out.println("Id already taken! Try another one");
+                id = sc.nextInt();
+            }
             
-            sc.nextLine();
             System.out.print("Name: ");
+            sc.nextLine();
             String name = sc.nextLine();
             
             System.out.print("Salary: ");
@@ -40,7 +44,41 @@ public class EmployeeRegistration {
             Employee employee = new Employee(id, name, salary);
             employees.add(employee);
         }
-                
+        
+        System.out.println("Enter the employee id that will have salary increase: ");
+        int idToIncrease = sc.nextInt();
+        //Integer index = position(employees, idToIncrease);
+        
+        Employee emp = employees.stream().filter(x -> x.getId() == idToIncrease).findFirst().orElse(null);
+
+        if(emp == null){
+            System.out.println("Id not found");
+        } else {
+            System.out.println("Enter the percentage: ");
+            double percent = sc.nextDouble();
+            emp.increaseSalary(percent);
+        }
+        
+        System.out.println("");
+        System.out.println("Employee list");
+        for(Employee employee : employees){
+            System.out.println(employee);
+        }
+                 
         sc.close();
+    }
+    
+    public static Integer position(List<Employee> employees, int id){
+        for(int i =0; i < employees.size(); i += 1){
+            if(employees.get(i).getId() == id){
+                return i;
+            }
+        }
+        return null;
+    }
+    
+     public static boolean hasId(List<Employee> employees, int id){
+        Employee employee = employees.stream().filter(e -> e.getId() == id).findFirst().orElse(null);
+        return employee != null;
     }
 }
