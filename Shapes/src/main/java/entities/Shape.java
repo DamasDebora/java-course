@@ -28,5 +28,5 @@ public abstract class Shape {
         this.color = color;
     }
   
-    public abstract Double area();
+    public abstract double area();
 }
