@@ -4,6 +4,7 @@
 
 package com.mycompany.banckaccountexc;
 
+import exceptions.BusinessException;
 import java.util.Locale;
 import java.util.Scanner;
 import model.entities.Account;
@@ -37,9 +38,14 @@ public class BanckAccountexc {
         System.out.println("");
         System.out.println("inform the amount to withdraw: ");
         double amount = sc.nextDouble();
-        account.withdraw(amount);
         
-        System.out.printf("New balance: %.2f%n ", account.getBalance());
+        try {
+           account.withdraw(amount);        
+           System.out.printf("New balance: %.2f%n ", account.getBalance()); 
+        } catch(BusinessException e){
+            System.out.println(e.getMessage());
+        }
+        
         sc.close();
     } 
 }

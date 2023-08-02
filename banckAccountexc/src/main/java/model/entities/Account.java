@@ -4,6 +4,8 @@
  */
 package model.entities;
 
+import exceptions.BusinessException;
+
 /**
  *
  * @author debora
@@ -61,6 +63,16 @@ public class Account {
     }
     
     public void withdraw(double amount){
+        validateWithDraw(amount);
         balance -= amount;
+    }
+    
+    private void validateWithDraw(double amount){
+        if(amount > getWithdrawLimit()){
+            throw new BusinessException("the amount exceeds the withdrawal limit");
+        }
+        if(amount > getBalance()){
+            throw new BusinessException("insufficient funds");
+        }
     }
 }
