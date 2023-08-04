@@ -38,6 +38,9 @@ public class Invoice {
     }
     
   public Double totalPayment(){
-      return getBasicPayment() - getTax();
+      return getBasicPayment() + getTax();
   }  
 }
+
+//Retirada (dd/mm/yyyy hh:mm): 25/02/2025 10:30
+//Retorno (dd/mm/yyyy hh:mm): 27/02/2025 11:40
